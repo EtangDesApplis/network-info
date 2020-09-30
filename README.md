@@ -1,6 +1,6 @@
 # SET UP RASPBERRY PI
 ## WIFI CONNECTION
-create /etc/network.interfaces
+create /etc/network/interfaces
 ```
 # interfaces(5) file used by ifup(8) and ifdown(8)
 
