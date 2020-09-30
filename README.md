@@ -1,4 +1,21 @@
 # SET UP RASPBERRY PI
+
+## Setup no monitor
+
+In boot folder create a file ssh (touch ssh)
+and wpa_supplicant.conf with content:
+
+```
+country=FR
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+  ssid="WIFI-NAME"
+  psk="WIFI-PASSWORD"
+}
+```
+
 ## WIFI CONNECTION
 create /etc/network/interfaces
 ```
