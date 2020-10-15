@@ -38,6 +38,35 @@ iface wlan0 inet dhcp
     wpa-ssid "WIFI-NAME"
     wpa-psk "WIWI-PASSWORD"
 ```
+### Raspberry 4 with Ubuntu
+```
+sudo nano /etc/netplan/50-cloud-init.yaml
+```
+```
+# This file is generated from information provided by the datasource. Changes
+# to it will not persist across an instance reboot. To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        eth0:
+            dhcp4: true
+            optional: true
+    version: 2
+    wifis:
+        wlan0:
+            dhcp4: true
+            optional: true
+            access-points:
+                "SSID_name":
+                    password: "WiFi_password"
+```
+```
+sudo netplan apply
+sudo systemctl start wpa_supplicant
+sudo reboot
+```
 
 ## KEYBOARD
 Modify the /etc/default/keyboard
@@ -57,4 +86,8 @@ XKBVARIANT="azerty"
 XKBOPTIONS=""
 
 BACKSPACE="guess"
+```
+In case of need
+```
+sudo loadkeys fr
 ```
